@@ -1,0 +1,13 @@
+#version:
+services:
+  db:
+    build: .
+    container_name: docker-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: docker_postgres_db
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+    ports: #pasar del puerto interno 5432 al 5432 de mi PC
+      - "5432:5432"
